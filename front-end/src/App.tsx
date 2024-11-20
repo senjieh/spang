@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [inputText, setInputText] = useState("");
+  const [suggestedWords, setSuggestedWords] = useState([]);
   const [curWordPos, setCurWordPos] = useState(0);
 
   // Simulated API data
@@ -31,6 +32,11 @@ function App() {
       }
       setInputText("");
     } else {
+
+      // todo: retrieve words
+      setSuggestedWords([])
+
+      // update state 
       setInputText(currInputWord);
     }
   };
@@ -60,6 +66,16 @@ function App() {
             autoCorrect="off"
             autoCapitalize="off"
           />
+          <div>
+            {suggestedWords.map((word, index) => {
+              if(index == curWordPos ) {
+                return <p key={index} className='curWord'>{word.word}</p>
+              }
+              else{
+                return <p key={index} className='gWord'>{word.word}</p>
+              }
+            })}
+          </div>
         </div>
       )}
     </>

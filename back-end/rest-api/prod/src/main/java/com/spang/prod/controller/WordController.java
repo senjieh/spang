@@ -14,6 +14,8 @@ public class WordController {
     @Autowired
     private WordService service;
 
+    // Language Parameter:
+    // spang_eng - spanish to english
     @GetMapping("/{language}/{word}")
     public Word getWordByLanguage(@PathVariable String language, @PathVariable String word) {
         return service.findWord(language, word);
